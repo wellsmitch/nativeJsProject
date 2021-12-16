@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/element/css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <script src="../js/vue.js"></script>
+    <script src="../js/pubsub.js"></script>
+    <script src="../lib/element/element.js"></script>
+    <link rel="stylesheet" href="../lib/element/css/element.css">
+    <script src="../js/md-menu.js"></script>
+</head>
+<body>
+<div :class="'project-container'+(isCollapse ? ' pro-menu-collapse': ' pro-menu-expand')" id="project-index-id">
+    <div class="project-header">
+        项目头部
+    </div>
+    <div class="project-body">
+        <div class="project-sider">
+            <el-menu class="project-sider-menu" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+                <md-menu :menudata="menuData" :iscollapse="isCollapse"></md-menu>
+            </el-menu>
+        </div>
+        <div class="project-main">
+            <div class="project-bread-crumb">
+                <div class="side-collapse-btn el-icon-s-fold" @click="sideCollapse"></div>
+                <el-breadcrumb separator="/">
+                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                    <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+                    <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+                    <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+                </el-breadcrumb>
+            </div>
+            <div class="project-content">123</div>
+        </div>
+    </div>
+</div>
+<script src="index.js"></script>
+
+</body>
+</html>

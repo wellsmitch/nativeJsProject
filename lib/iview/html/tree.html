@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+    <script src="../js/iview.js"></script>
+    <link rel="stylesheet" href="../css/iview.css">
+</head>
+<body>
+<div id="box">
+    <Tree :data="baseData" :render="renderContent"></Tree>
+    <button @click="moveTreeNode">移动位置</button>
+</div>
+
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#box',
+        data: {
+            baseData: [{
+                expand: true,
+                title: 'parent 1',
+                children: [
+                    {
+                        title: 'parent 1-0',
+                        expand: true,
+                        disabled: true,
+                        children: [{
+                            title: 'leaf1',
+                            disableCheckbox: true
+                        }, {
+                            title: 'leaf2',
+                        }]
+                    },
+                    {
+                        title: 'parent 1-1',
+                        expand: true,
+                        checked: true,
+                        children: [{
+                            title: '<span style="color: red">leaf</span>',
+                        }]
+                    }
+                ]
+            },
+                {
+                    title: 123,
+                    children: [
+                        {
+                            title: 345
+                        }
+                    ]
+                }
+            ]
+
+        },
+        methods: {
+            getcurrentData() {
+
+            },
+            getParentData(tableData, queryString, cb) {
+                var that = this;
+                tableData.forEach(function (ele) {
+                    if (ele.title === queryString) {
+                        cb(ele);
+                    } else if (ele.children) {
+                        that.getParentData(ele.children, queryString, cb)
+                    }
+                });
+            },
+            moveTreeNode() {
+                let tartgetArr = this.baseData[0].children;
+                let spliceEl = tartgetArr.splice(0, 1)[0];
+                this.$set(tartgetArr, 1, spliceEl);
+            },
+            renderContent(h, ctx) {
+                return h("span", {
+                    on: {
+                        click() {
+                            console.log(ctx);
+                            var p = vm.getParentData(vm.baseData, "parent 1-0", function (res) {
+                                console.log(res);
+                                var index1 = "";
+                                res.children.map((el, index) => {
+                                    if (el.title === ctx.data.title) {
+                                        index1 = index
+                                    }
+                                });
+                                var currentNode = res.children.splice(index1, 1);
+                                if (currentNode.length > 0) {
+                                    res.children.splice(0, 0, {
+                                        title: "组" + Math.ceil(Math.random() * 1000),
+                                        children: [
+                                            currentNode[0]
+                                        ]
+                                    });
+                                }
+                            });
+                            console.log(p);
+                        }
+                    }
+                }, ctx.data.title)
+            }
+        }
+    })
+
+</script>
+
+</body>
+</html>

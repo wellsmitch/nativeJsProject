@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+    <script src="../js/iview.js"></script>
+    <link rel="stylesheet" href="../css/olderIviewCss/iview.css">
+    <link rel="stylesheet" href="../css/iview.css">
+</head>
+<body>
+<Card id="login" class="login">
+    <div style="font-size:24px;color:#3091f2">金融机构登录</div>
+    <i-Form id="form" action="/bdcyhb/doLogin" method="post" ref="form" :model="form" :rules="rules"
+            style="padding:30px 0" inline>
+        <Icon type="ios-person-outline" size="35"></Icon>
+        <i class="ivu-icon ivu-icon-ios-person-outline" style="font-size: 35px;"></i>
+        <Form-item prop="userId">
+            <i-Input name="userId" size="large" style="width:250px" placeholder="用户名" :maxlength="30"
+                     v-model="form.userId" @on-enter="submit">
+            </i-input>
+        </Form-item>
+        <br>
+        <Icon type="ios-locked-outline" size="35"></Icon>
+        <Form-item prop="userPwd">
+            <i-Input id="pwd" name="userPwd" type="password" size="large" style="width:250px" :maxlength="30"
+                     placeholder="密    码" v-model="form.userPwd" @on-enter="submit">
+            </i-input>
+        </Form-item>
+        <div style="font-size:15px;color:#ff9900">办理ukey？请联系不动产登记中心</div>
+    </i-Form>
+</Card>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#login',
+        data: {
+            ukeyValidState: "ukeyValidState",
+            form: {
+                userId: '',
+                userPwd: '',
+                ukeyId: '',//ukey
+                ukeyState: '0',//ukey提醒
+                loginState: 0,//点击登录
+                bConnect: 0//uKey是否安装程序状态
+            },
+            rules: {
+                userId: [{
+                    required: true,
+                    message: '请填写用户名',
+                    trigger: 'blur'
+                }],
+                userPwd: [{
+                    required: true,
+                    message: '请填写密码',
+                    trigger: 'blur'
+                }, {
+                    type: 'string',
+                    min: 5,
+                    message: '密码长度不能小于5位',
+                    trigger: 'blur'
+                }]
+            },
+        },
+        methods: {
+            submit: function () {
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

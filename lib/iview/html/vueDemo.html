@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+    <link rel="stylesheet" href="../css/iview.css">
+    <script src="../js/iview.js"></script>
+</head>
+<body>
+<div id="out">
+    <!--<Page :total="40" size="small">-->
+    <!--<div>dasdas</div>-->
+    <!--</Page>-->
+    <!--<Page :total="40" size="small" show-elevator show-sizer></Page>-->
+    <!--<Page :total="40" size="small" show-total></Page>-->
+    <i-select v-model="model1" style="width:200px" @on-change="change_">
+        <i-option v-for="item in cityList" :value="item.value" :key="item">{{ item.label }}
+        </i-option>
+    </i-select>
+
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: "#out",
+        data() {
+            return {
+                cityList: [
+                    {
+                        value: 'beijing',
+                        label: '北京市'
+                    },
+                    {
+                        value: 'shanghai',
+                        label: '上海市'
+                    },
+                    {
+                        value: 'shenzhen',
+                        label: '深圳市'
+                    },
+                    {
+                        value: 'hangzhou',
+                        label: '杭州市'
+                    },
+                    {
+                        value: 'nanjing',
+                        label: '南京市'
+                    },
+                    {
+                        value: 'chongqing',
+                        label: '重庆市'
+                    }
+                ],
+                model1: "shanghai"
+            }
+        },
+        methods: {
+            change_(a, b, c) {
+                console.log(a, b, c);
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+
+.project-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-header {
+    height: 40px;
+    background: #2b85e4;
+}
+.project-body {
+    flex: 1;
+    display: flex;
+}
+.project-main {
+    flex: 1;
+    display: flex;
+}
+
+.project-content {
+    flex: 1;
+    background: #fff0f6;
+}
+
+.project-sider {
+    width: 65px;
+    height: 100%;
+    transition: width .28s;
+}
+.pro-menu-expand .project-sider {
+    width: 200px;
+}
+.project-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.project-bread-crumb {
+    height: 60px;
+}
+#project-index-id .el-breadcrumb {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 60px;
+    margin-left: 8px;
+}
+#project-index-id .side-collapse-btn{
+    padding: 0px 15px;
+    line-height: 60px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+    -webkit-tap-highlight-color: transparent;
+}
+#project-index-id .el-menu--collapse,#project-index-id .el-menu {
+    width: 100%!important;
+}
+.pro-menu-collapse .project-sider-menu  span,
+.pro-menu-collapse .project-sider-menu  i.el-submenu__icon-arrow
+{
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+    display: inline-block;
+}
+.project-sider-menu {
+    /*transition: all .3s;*/
+}
