@@ -71,3 +71,16 @@
 .project-sider-menu {
     /*transition: all .3s;*/
 }
+/* 面包屑样式 start */
+.project-bread-crumb .el-breadcrumb__inner {
+    font-weight: 700;
+    text-decoration: none;
+    transition: color .2s cubic-bezier(.645,.045,.355,1);
+    color: #333333;
+}
+.project-bread-crumb .el-breadcrumb__inner:hover,
+.project-bread-crumb  .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+    color: #409eff;
+    cursor: pointer;
+}
+/* 面包屑样式 end */

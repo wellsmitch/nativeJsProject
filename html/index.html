@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../lib/element/css/element.css">
     <link rel="stylesheet" href="../lib/element/css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <script src="../js/vue.js"></script>
     <script src="../js/pubsub.js"></script>
     <script src="../lib/element/element.js"></script>
-    <link rel="stylesheet" href="../lib/element/css/element.css">
     <script src="../js/md-menu.js"></script>
+    <script src="../js/md-bread-crumb.js"></script>
 </head>
 <body>
 <div :class="'project-container'+(isCollapse ? ' pro-menu-collapse': ' pro-menu-expand')" id="project-index-id">
@@ -23,16 +24,10 @@
             </el-menu>
         </div>
         <div class="project-main">
-            <div class="project-bread-crumb">
-                <div class="side-collapse-btn el-icon-s-fold" @click="sideCollapse"></div>
-                <el-breadcrumb separator="/">
-                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-                    <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                    <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-                </el-breadcrumb>
+            <bread-crumb :breadcrumbdata="breadCrumbData" :collapse="isCollapse" @bread-crumb-click="getCrumbData"></bread-crumb>
+            <div class="project-content">
+                <iframe v-for="(iframeObj, iframeIndex) in contentIframeList" src="iframeObj.src" frameborder="0"></iframe>
             </div>
-            <div class="project-content">123</div>
         </div>
     </div>
 </div>

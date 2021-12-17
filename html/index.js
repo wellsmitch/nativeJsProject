@@ -49,7 +49,28 @@ var indexPageVm = new Vue({
                     iconName: "el-icon-setting",
                 },
             ],
-            isCollapse: true
+            isCollapse: true,
+            breadCrumbData: [
+                {
+                    name: "首页",
+                    url: "首页 的url"
+                },
+                {
+                    name: "活动管理",
+                    url: "活动管理 的url"
+                },
+                {
+                    name: "活动列表",
+                    url: "活动列表 的url"
+                },
+                {
+                    name: "活动详情",
+                    url: "活动详情 的url"
+                },
+            ],
+            contentIframeList: [
+
+            ]
         }
     },
     methods: {
@@ -61,6 +82,9 @@ var indexPageVm = new Vue({
         },
         handleClose: function (key, keyPath) {
             console.log(key, keyPath);
+        },
+        getCrumbData: function (breadcrumbdata) {
+            console.log(breadcrumbdata);
         }
     },
     mounted: function () {
