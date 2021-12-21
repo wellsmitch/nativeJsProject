@@ -62,6 +62,9 @@ var indexPageVm = new Vue({
         },
         handleClose: function (key, keyPath) {
             console.log(key, keyPath);
+        },
+        getCrumbData: function (breadcrumbdata) {
+            console.log(breadcrumbdata);
         }
     },
     mounted: function () {
