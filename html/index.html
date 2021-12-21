@@ -10,6 +10,7 @@
     <script src="../lib/element/element.js"></script>
     <link rel="stylesheet" href="../lib/element/css/element.css">
     <script src="../js/md-menu.js"></script>
+    <script src="../js/common.js"></script>
 </head>
 <body>
 <div :class="'project-container'+(isCollapse ? ' pro-menu-collapse': ' pro-menu-expand')" id="project-index-id">
@@ -32,7 +33,9 @@
                     <el-breadcrumb-item>活动详情</el-breadcrumb-item>
                 </el-breadcrumb>
             </div>
-            <div class="project-content">123</div>
+            <div class="project-content">
+                <iframe v-for="(windowObj, windowIndex) in windowList" :id="('iframeId_') + windowObj.id" :src="windowObj.url" frameborder="0"></iframe>
+            </div>
         </div>
     </div>
 </div>

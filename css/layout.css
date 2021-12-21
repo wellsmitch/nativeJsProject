@@ -71,3 +71,7 @@
 .project-sider-menu {
     /*transition: all .3s;*/
 }
+.project-content iframe {
+    width: 100%;
+    height: 100%;
+}

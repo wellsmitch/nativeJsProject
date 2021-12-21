@@ -49,6 +49,7 @@ var indexPageVm = new Vue({
                     iconName: "el-icon-setting",
                 },
             ],
+            windowList: [],
             isCollapse: true
         }
     },
