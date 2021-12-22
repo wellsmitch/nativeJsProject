@@ -11,7 +11,7 @@ var mdMenuTemplate = `
             </el-submenu>
         </template>
         <template v-else>
-           <el-menu-item :index="menuInfo.index" :key="menuIndex">
+           <el-menu-item :index="menuInfo.index" :key="menuIndex" @click="menuTap(menuInfo)">
                 <i :class="menuInfo.iconName"></i>
                 <span slot="title">{{menuInfo.name}}</span>
            </el-menu-item>
@@ -38,7 +38,9 @@ Vue.component("MdMenu", {
     },
     watch: {},
     methods: {
-
+        menuTap: function (menuInfo) {
+            indexPageVm.setMenuDefaultActive(menuInfo);
+        }
     },
     mounted: function () {
         console.log(this.menudata);

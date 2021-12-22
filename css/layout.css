@@ -19,10 +19,7 @@
     display: flex;
 }
 
-.project-content {
-    flex: 1;
-    background: #fff0f6;
-}
+
 
 .project-sider {
     width: 65px;
@@ -37,26 +34,8 @@
     display: flex;
     flex-direction: column;
 }
-.project-bread-crumb {
-    height: 60px;
-}
-#project-index-id .el-breadcrumb {
-    display: inline-block;
-    font-size: 14px;
-    line-height: 60px;
-    margin-left: 8px;
-}
-#project-index-id .side-collapse-btn{
-    padding: 0px 15px;
-    line-height: 60px;
-    height: 100%;
-    float: left;
-    cursor: pointer;
-    -webkit-transition: background .3s;
-    transition: background .3s;
-    -webkit-tap-highlight-color: transparent;
-}
-#project-index-id .el-menu--collapse,#project-index-id .el-menu {
+
+#layoutPageId .el-menu--collapse,#layoutPageId .el-menu {
     width: 100%!important;
 }
 .pro-menu-collapse .project-sider-menu  span,
@@ -77,13 +56,37 @@
     text-decoration: none;
     transition: color .2s cubic-bezier(.645,.045,.355,1);
     color: #333333;
+    user-select: none;
 }
 .project-bread-crumb .el-breadcrumb__inner:hover,
 .project-bread-crumb  .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
     color: #409eff;
     cursor: pointer;
 }
+.project-bread-crumb {
+    height: 60px;
+}
+.project-bread-crumb .el-breadcrumb {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 60px;
+    margin-left: 8px;
+}
+.project-bread-crumb .side-collapse-btn{
+    padding: 0px 15px;
+    line-height: 60px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+    -webkit-tap-highlight-color: transparent;
+}
 /* 面包屑样式 end */
+.project-content {
+    flex: 1;
+    background: #fff0f6;
+}
 .project-content iframe {
     width: 100%;
     height: 100%;

@@ -12,28 +12,44 @@ Vue.component("BreadCrumb", {
     name: "BreadCrumb",
     template: breadCrumbTemplate,
     props: {
-        collapse: {
-          type: Boolean,
-          default: false
-        },
-        breadcrumbdata:{
-            type: Array,
-            default: []
-        }
+
     },
     data: function () {
-        return {}
+        return {
+            breadcrumbdata: JSON.parse(JSON.stringify(window.top.indexPageVm.windowList))
+        }
     },
     watch: {},
     methods: {
         sideCollapse: function () {
-            this.sideCollapse = !this.collapse;
+            window.top.indexPageVm.isCollapse = !window.top.indexPageVm.isCollapse;
         },
         breadCrumbClick: function (item) {
+            var targetMenuIndex = null;
+            var windowList_ = this.breadcrumbdata;
+            windowList_.map(function (w, i) {
+                if (w.index === item.index) {
+                    targetMenuIndex = i;
+                }
+            });
+            windowList_.splice(targetMenuIndex + 1, windowList_.length - (targetMenuIndex + 1));
+            window.top.indexPageVm.windowList = windowList_;
+            var hasUrlPageList = windowList_.filter(function (ele) {
+                return ele.url && ele.url != "#";
+            });
+
+            window.top.indexPageVm.menuOpenDefault = hasUrlPageList[0];
+
+            if(hasUrlPageList.length === 0) {
+                window.top.location.reload()
+            }
+
             this.$emit("bread-crumb-click", item);
         }
     },
     mounted: function () {
-
+        var that = this;
+    },
+    updated: function () {
     }
 });

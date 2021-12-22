@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/element/css/element.css">
+    <link rel="stylesheet" href="../lib/element/css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <script src="../js/vue.js"></script>
+    <script src="../js/pubsub.js"></script>
+    <script src="../lib/element/element.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/md-bread-crumb.js"></script>
+</head>
+<body>
+<div id="layoutPageId">
+    <bread-crumb :breadcrumbdata="windowList" :collapse="isCollapse" @side-collapse-click="sideCollapseClick"
+                 @bread-crumb-click="breadCrumbClick"></bread-crumb>
+    活动列表
+
+</div>
+<script src="../js/md-bread-crumb.js"></script>
+<script>
+
+    let vm = new Vue({
+        el: "#layoutPageId",
+        data: function () {
+            return {
+                isCollapse: true,
+                windowList: []
+            }
+        },
+        methods: {
+            sideCollapseClick: function (isCollapse) {
+                PubSub.publish("collapseStatus", isCollapse);
+            },
+            breadCrumbClick: function (crumbObj) {
+                PubSub.subscribe("breadCrumbClickObj", function (isCollapse) {
+                    that.isCollapse = isCollapse;
+                });
+            },
+        },
+        mounted() {
+            var that = this;
+            this.windowList = window.top.indexPageVm.windowList;
+        }
+    })
+</script>
+</body>
+</html>

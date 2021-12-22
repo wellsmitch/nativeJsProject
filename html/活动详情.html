@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/element/css/element.css">
+    <link rel="stylesheet" href="../lib/element/css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <script src="../js/vue.js"></script>
+    <script src="../js/pubsub.js"></script>
+    <script src="../lib/element/element.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/md-bread-crumb.js"></script>
+</head>
+<body>
+<div id="layoutPageId">
+    <bread-crumb @bread-crumb-click="breadCrumbClick"></bread-crumb>
+    活动详情
+    <input type="text">
+    <button @click="openPage()">打开新页面</button>
+</div>
+<script src="../js/md-bread-crumb.js"></script>
+<script>
+
+    let vm = new Vue({
+        el: "#layoutPageId",
+        data: function () {
+            return {
+            }
+        },
+        methods: {
+            breadCrumbClick: function (crumbObj) {
+
+            },
+            openPage: function () {
+                window.top.indexPageVm.openPage({
+                    index: "index_1fsafs",
+                    url:"./detail.html",
+                    name: "detail 页面"
+                })
+            },
+        },
+        mounted() {
+            var that = this;
+        },
+    })
+</script>
+</body>
+</html>

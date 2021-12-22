@@ -1,5 +1,5 @@
-function ContentWindow() {
-    this.windowList = [];
+function ContentWindow(windowList) {
+    this.windowList = windowList || [];
 }
 
 ContentWindow.prototype.open = function (windowUrl, windowId, option) {

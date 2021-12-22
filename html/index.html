@@ -3,42 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../lib/element/css/element.css">
     <link rel="stylesheet" href="../lib/element/css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <script src="../js/vue.js"></script>
     <script src="../js/pubsub.js"></script>
     <script src="../lib/element/element.js"></script>
-    <link rel="stylesheet" href="../lib/element/css/element.css">
-    <script src="../js/md-menu.js"></script>
     <script src="../js/common.js"></script>
+    <script src="../js/content-iframe-window.js"></script>
+    <script src="../js/md-bread-crumb.js"></script>
 </head>
 <body>
-<div :class="'project-container'+(isCollapse ? ' pro-menu-collapse': ' pro-menu-expand')" id="project-index-id">
+<div :class="'project-container'+(isCollapse ? ' pro-menu-collapse': ' pro-menu-expand')" id="layoutPageId">
     <div class="project-header">
         项目头部
     </div>
     <div class="project-body">
         <div class="project-sider">
-            <el-menu class="project-sider-menu" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-                <md-menu :menudata="menuData" :iscollapse="isCollapse"></md-menu>
+            <el-menu
+                    class="project-sider-menu"
+                    @open="handleOpen"
+                    @close="handleClose"
+                    :collapse="isCollapse"
+                    :default-active="menuOpenDefault.index"
+            >
+                <md-menu
+                        :menudata="menuData"
+                        :iscollapse="isCollapse"
+                ></md-menu>
             </el-menu>
         </div>
         <div class="project-main">
-            <div class="project-bread-crumb">
-                <div class="side-collapse-btn el-icon-s-fold" @click="sideCollapse"></div>
-                <el-breadcrumb separator="/">
-                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-                    <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                    <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-                </el-breadcrumb>
-            </div>
             <div class="project-content">
-                <iframe v-for="(windowObj, windowIndex) in windowList" :id="('iframeId_') + windowObj.id" :src="windowObj.url" frameborder="0"></iframe>
+                <template v-for="(windowObj, windowIndex) in windowList" v-if="windowObj.url != '#'">
+                    <iframe
+                            :title="menuOpenDefault.index +windowObj.index"
+                            v-show="menuOpenDefault.index == windowObj.index"
+                            :id="('iframeId_') + windowObj.index"
+                            :src="windowObj.url"
+                            frameborder="0"></iframe>
+                </template>
             </div>
         </div>
     </div>
 </div>
+<script src="../js/md-menu.js"></script>
 <script src="index.js"></script>
 
 </body>

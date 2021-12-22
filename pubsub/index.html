@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/pubsub.js"></script>
+</head>
+<body>
+<button onclick="tap()">index</button>
+<iframe src="./A.html" frameborder="0"></iframe>
+<script>
+    function tap() {
+
+    }
+
+    window.PubSub.subscribe('aaa',function(msg,data){
+        alert(msg)
+    });
+</script>
+</body>
+</html>
